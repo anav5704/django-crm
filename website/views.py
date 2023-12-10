@@ -1,8 +1,11 @@
 from django.contrib.auth import authenticate, login as authLogin, logout as authLogout
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .models import Customer
 
 def home(req):
+    customers = Customer.objects.all
+
     if req.method == "POST":
         username = req.POST["username"]
         passwd = req.POST["passwd"]
@@ -16,9 +19,18 @@ def home(req):
         else:
             messages.error(req, "Oops, something went wrong!")
             return redirect("home")
-        
+
     else:
-        return render(req, "home.html", {})
-    
+        return render(req, "home.html", {"customers": customers})
+
+
 def logout(req):
-    pass
+    authLogout(req)
+    messages.success(req, "You've been successfully logged out!")
+    return redirect("home")
+
+
+def customer(req, key):
+    if req.user.is_authenticated:
+        customer = Customer.objects.get(id=key)
+        return render(req, "customer.html", {"customer": customer})

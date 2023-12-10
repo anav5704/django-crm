@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="h-[90vh] w-full grid place-content-center">
+    <div class="flex flex-col bg-white border rounded-lg w-[40vw]">
+        <div class="bg-zinc-100 border-b rounded-t-xl py-3 px-4">
+            <p class="mt-1 text-sm text-gray-500 font-semibold">
+                Customer Details
+            </p>
+        </div>
+        <div class="p-4">
+            <div class=" text-gray-800">
+                <p class="flex"><span class="font-semibold w-1/2 mr-5">First Name</span> {{ customer.firstName }}</p>
+                <p class="flex"><span class="font-semibold w-1/2 mr-5">Last Name</span> {{ customer.lastName }}</p>
+                <p class="flex"><span class="font-semibold w-1/2 mr-5">Email</span> {{ customer.email }}</p>
+                <p class="flex"><span class="font-semibold w-1/2 mr-5">Phone</span> {{ customer.phone }}</p>
+                <p class="flex"><span class="font-semibold w-1/2 mr-5">City</span> {{ customer.city }}</p>
+                <p class="flex"><span class="font-semibold w-1/2 mr-5">Country</span> {{ customer.country }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="flex items-center justify-between gap-x-4 mt-4">
+        <a class="w-full" href="{% url "home" %}"><button class="w-full py-2 border rounded-md text-zinc-500 text-sm font-semibold hover:text-zinc-800">Back</button></a>
+        <button class="w-full py-2 border rounded-md text-zinc-500 text-sm font-semibold hover:text-zinc-800">Delete</button>
+        <button class="w-full py-2 border rounded-md text-zinc-500 text-sm font-semibold hover:text-zinc-800">Update</button>
+    </div>
+</div>
+
+{% endblock %}

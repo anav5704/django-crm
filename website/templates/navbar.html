@@ -1,21 +1,32 @@
 <nav class="mx-auto flex w-full px-[10vw] items-center justify-between h-[10vh] border-b" aria-label="Global">
-    <div class="flex lg:flex-1">
+    <div class="flex sm:flex-1">
         <a href="/" class="-m-1.5 p-1.5">
             <img class="h-8 w-auto" src="https://static-00.iconduck.com/assets.00/django-icon-1606x2048-lwmw1z73.png"
                 alt="">
         </a>
     </div>
 
-    <div class="hidden lg:flex lg:gap-x-12">
+    <div class="hidden sm:flex sm:gap-x-12">
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
         <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
     </div>
 
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <div
+    <div class="hidden sm:flex sm:flex-1 sm:justify-end">
+        {% if user.is_authenticated %}
+
+        <a href="{% url "logout" %}"
             class="bg-emerald-500 px-4 py-1 flex items-center rounded-full text-white text-sm font-semibold leading-6 ">
-            Free Plan
-        </div>
+            Log Out
+        </a>
+
+        {% else %}
+
+        <a href="{% url "home" %}"
+            class="bg-emerald-500 px-4 py-1 flex items-center rounded-full text-white text-sm font-semibold leading-6 ">
+            Log In
+        </a>
+
+        {% endif %}
     </div>
 </nav>
