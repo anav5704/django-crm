@@ -10,7 +10,7 @@
             </p>
         </div>
         <div class="p-4">
-            <div class=" text-gray-800">
+            <div class=" text-gray-800 text-sm">
                 <p class="flex"><span class="font-semibold w-1/2 mr-5">First Name</span> {{ customer.firstName }}</p>
                 <p class="flex"><span class="font-semibold w-1/2 mr-5">Last Name</span> {{ customer.lastName }}</p>
                 <p class="flex"><span class="font-semibold w-1/2 mr-5">Email</span> {{ customer.email }}</p>
@@ -22,7 +22,7 @@
     </div>
     <div class="flex items-center justify-between gap-x-4 mt-4">
         <a class="w-full" href="{% url "home" %}"><button class="w-full py-2 border rounded-md text-zinc-500 text-sm font-semibold hover:text-zinc-800">Back</button></a>
-        <button class="w-full py-2 border rounded-md text-zinc-500 text-sm font-semibold hover:text-zinc-800">Delete</button>
+        <a class="w-full" href="{% url "delete" customer.id %}"><button class="w-full py-2 border rounded-md text-zinc-500 text-sm font-semibold hover:text-zinc-800">Delete</button></a>
         <button class="w-full py-2 border rounded-md text-zinc-500 text-sm font-semibold hover:text-zinc-800">Update</button>
     </div>
 </div>

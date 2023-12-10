@@ -26,6 +26,7 @@ def home(req):
 
 def logout(req):
     authLogout(req)
+
     messages.success(req, "You've been successfully logged out!")
     return redirect("home")
 
@@ -34,3 +35,16 @@ def customer(req, key):
     if req.user.is_authenticated:
         customer = Customer.objects.get(id=key)
         return render(req, "customer.html", {"customer": customer})
+
+
+def delete(req, key):
+    if req.user.is_authenticated:
+        customer  = Customer.objects.get(id=key)
+        customer.delete()
+        
+        messages.success(req, "Customer successfully deleted!")
+        return redirect("home")
+    else:
+        messages.error(req, "Oops, something went wrong!")
+        return redirect("home")
+
