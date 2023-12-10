@@ -2,6 +2,30 @@
 
 {% block content %}
 
-<h1>HEY</h1>
+<div class="h-[90vh] w-full grid place-content-center">
+
+    {% if user.is_authenticated %}
+
+    <h1>Hey user</h1>
+
+    {% else %}
+
+    <form action="{% url "home" %}" method="POST" class="w-72 flex flex-col gap-y-5">
+
+    {% csrf_token %} 
+
+    <h2 class="text-2xl font-bold text-center text-zinc-800">Log In</h2>
+        <input required type="text" name="username" id="username"
+            class="block w-full rounded-md border-0 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
+            placeholder="Username">
+        <input required type="password" name="passwd" id="passwd"
+            class="block w-full rounded-md border-0 py-2 px-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 outline-none focus:ring-inset focus:ring-emerald-500 sm:text-sm sm:leading-6"
+            placeholder="Password">
+        <button class="bg-emerald-500 hover:bg-emerald-600  text-white py-2 rounded-md">Continue</button>
+        <p class="text-center text-sm text-zinc-400">Your data is secure, trust me</p>
+    </form>
+</div>
+
+{% endif %}
 
 {% endblock %}
